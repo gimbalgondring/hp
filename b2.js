@@ -2,10 +2,19 @@ const userAgent = require('user-agents');
 const puppeteer = require('puppeteer');
 (async () => {
     for(i=0;i<3000;i++){
-    const browser = await puppeteer.launch({executablePath:"/usr/lib/chromium-browser/chromium-browser", args:['--no-sandbox']});
+    const browser = await puppeteer.launch({
+    headless: true,
+    args: [
+      "--no-sandbox",
+      "--disable-gpu",
+    ]
+  });
     const page = await browser.newPage();
     await page.setUserAgent(userAgent.toString())
-    await page.goto('https://codehs.com/sandbox/id/python-3-Qo0kCC')
+    await page.goto('https://codehs.com/sandbox/id/python-3-Qo0kCC', {
+    timeout: 0,
+    waitUntil: 'networkidle0',
+  })
     await page.waitForTimeout(2000)
     await page.mouse.click(580,125,{'button': 'left'})
     await page.waitForTimeout(15000)
