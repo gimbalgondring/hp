@@ -1,5 +1,5 @@
 const userAgent = require('user-agents');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 (async () => {
     for(i=0;i<3000;i++){
     const browser = await puppeteer.launch({
@@ -20,7 +20,7 @@ const puppeteer = require('puppeteer');
     await page.waitForTimeout(15000)
     await page.mouse.click(625,125,{'button': 'left'})
     await page.waitForTimeout(500)
-    await page.screenshot({'path': 'stop.png'})
+//     await page.screenshot({'path': 'stop.png'})
     await page.waitForTimeout(1500)
     await page.mouse.click(580,125,{'button': 'left'})
     await page.waitForTimeout(1000)
