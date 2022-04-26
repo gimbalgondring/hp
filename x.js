@@ -1,5 +1,5 @@
 const userAgent = require('user-agents');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 (async () => {
     for(i=0;i<3000;i++){
     const browser = await puppeteer.launch({
